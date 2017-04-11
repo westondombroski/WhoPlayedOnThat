@@ -9,8 +9,13 @@
   </head>
 
   <body>
+    <% if !current_user %>
       <%= link_to "Sign in with spotify", "/auth/spotify" %>
-    
+    <% else %>
+      <%= image_tag current_user[:image], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+      <%= link_to "Sign Out", "/signout", :class=> "standard-text"%>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

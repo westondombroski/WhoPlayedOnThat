@@ -1,2 +1,6 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Who Played On</h1>
+  <%= form_tag("tracks/index", method: "get") do %>
+    <%= text_field_tag(:q, "That") %>
+    <%= submit_tag("Search") %>
+  <% end %>
+<h1>?</h1>
