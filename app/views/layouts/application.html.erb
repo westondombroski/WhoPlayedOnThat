@@ -5,17 +5,33 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <% if !current_user %>
-      <%= link_to "Sign in with spotify", "/auth/spotify" %>
-    <% else %>
-      <%= image_tag current_user[:image], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
-      <%= link_to "Sign Out", "/signout", :class=> "standard-text"%>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="pull-right">
+        <% if !current_user %>
+        <%= image_tag 'http://static1.businessinsider.com/image/55816e00ecad042e1153bd2b/designer-calls-spotifys-new-logo-self-indulgent.jpg', :width=> "60px", :height=> "50px", :class=> "spotify" %>
+          <%= link_to "login", "/auth/spotify" %>
+        <% else %>
+          <%= image_tag current_user[:image], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+          <%= link_to "logout", "/signout", :class=> "standard-text"%>
+        <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <% flash.each do |name, msg| %>
+      <div class="text-center"><%= msg %></div>
     <% end %>
 
-    <%= yield %>
+    <div class ="container-fluid">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

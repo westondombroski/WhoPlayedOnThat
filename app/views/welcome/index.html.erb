@@ -1,6 +1,12 @@
-<h1>Who Played On</h1>
-  <%= form_tag("tracks/index", method: "get") do %>
-    <%= text_field_tag(:q, "That") %>
-    <%= submit_tag("Search") %>
-  <% end %>
-<h1>?</h1>
+<div class="container-fluid">
+  <div class="col-sm-8 col-sm-offset-3"><h1>Who</h1></div>
+  <div class="col-sm-6 col-sm-offset-4"><h1>Played</h1></div>
+  <div class="col-sm-4 col-sm-offset-6"><h1>On</h1></div>
+  <div class="col-sm-3 col-sm-offset-7">
+    <%= form_tag("", method: "get") do %>
+      <%= text_field_tag(:q, "That") %>
+      <%= submit_tag("Search") %>
+      <h1>?</h1>
+    <% end %>
+  </div>
+</div>
