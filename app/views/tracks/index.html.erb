@@ -1,6 +1,5 @@
 <h1>Search Results for: <%= @search_term %></h1>
 
-
 <% @tracks.items.each do |track| %>
   <%= track.album.images[1].url %>
   <%= track.name %>
