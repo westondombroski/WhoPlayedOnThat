@@ -32,10 +32,10 @@
 <!-- Navbar login/logout/image -->
           <div class="pull-right">
             <% if !current_user %>
-            <%= image_tag 'http://static1.businessinsider.com/image/55816e00ecad042e1153bd2b/designer-calls-spotifys-new-logo-self-indulgent.jpg', :width=> "60px", :height=> "50px", :class=> "spotify" %>
+            <%= image_tag 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.talkandroid.com%2Fuploads%2F2016%2F01%2Fspotify-app-logo-450x450.png&f=1', :width=> "60px", :height=> "60px", :class=> "spotify" %>
               <%= link_to "login", "/auth/spotify" %>
             <% else %>
-              <%= image_tag current_user[:image], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+              <%= image_tag current_user[:image], :width=> "55px", :height=> "55px", :class=> "profile-pic img-circle" %>
               <%= link_to "logout", "/signout", :class=> "standard-text"%>
             <% end %>
           </div>
