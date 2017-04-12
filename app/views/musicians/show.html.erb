@@ -1,0 +1,15 @@
+<h4>Musician Name</h4>
+<h4>Instrument</h4>
+
+<div class="container-fluid">
+  <% @musicians.each do |track| %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h4><%= track['Title'] %></h4>
+      <h4><%= track['OriginalAlbumTitle'] %></h4>
+      <h4><%= track['MainArtistsLiteral'] %></h4>
+    </div>
+  </div>
+  <br>
+  <% end %>
+</div>
