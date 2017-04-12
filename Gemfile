@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 ruby '2.3.3'
 
+gem 'breadcrumbs'
+gem 'kaminari'
 gem 'httparty'
 gem 'omniauth-spotify-oauth2'
 gem 'omniauth-spotify'

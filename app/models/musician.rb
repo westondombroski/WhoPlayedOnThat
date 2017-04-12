@@ -7,4 +7,10 @@ class Musician < ApplicationRecord
     format :json
     get("", query: { participantIds: participant_id }, headers: { 'appid' => ENV["QUANTONE_APP_ID"], 'appkey' => ENV["QUANTONE_APP_KEY"] })
   end
+
+  #get  tracks by ids to populate playlist - Spotify API (musician#show)
+  def self.post_playlist_by_tracks_ids track_ids
+    base_uri "https://api.spotify.com/v1/search"
+    format :json
+  end
 end
