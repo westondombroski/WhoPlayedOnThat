@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
 
   get '/tracks', :to => 'tracks#index'
-  get '/tracks/:id', :to => 'tracks#show'
+  get '/track/:id', :to => 'tracks#show'
 
   get '/musicians/:id', :to => 'musicians#show'
 end

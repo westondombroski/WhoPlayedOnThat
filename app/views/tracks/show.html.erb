@@ -1,1 +1,6 @@
 <h1>Track#Show</h1>
+
+<% @track.each do |participant| %>
+<%= participant['ActivityLiteral'] %>
+<%= link_to participant['ArtistsLiteral'], "/musicians/" + participant['Artists'][0]['Id'] %><%=  %>
+<% end %>

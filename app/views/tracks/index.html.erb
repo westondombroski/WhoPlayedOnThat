@@ -1,8 +1,8 @@
 <h1>Search Results for: <%= @search_term %></h1>
 
-<% @tracks.items.each do |track| %>
-  <%= track.album.images[1].url %>
-  <%= track.name %>
-  <%= track.artists.name %>
-  <%= track.album.name %>
+<% @tracks.each do |track| %>
+  <%= image_tag track['album']['images'][1]['url'], :width=> "150px", :height=> "150px", :class=> "track-pic" %>
+  <%= link_to track['name'], "/track/" + track['id'] %>
+  <%= track['artists'][0]['name'] %>
+  <%= track['album']['name'] %>
 <% end %>

@@ -1,2 +1,6 @@
-<h1>Musicians#show</h1>
-<p>Find me in app/views/musicians/show.html.erb</p>
+
+<% @musicians.each do |track| %>
+  <%= track['Title']%>
+  <%= track['OriginalAlbumTitle'] %>
+  <%= track['MainArtistsLiteral'] %>
+<% end %>

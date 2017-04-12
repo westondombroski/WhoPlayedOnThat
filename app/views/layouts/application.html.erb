@@ -3,7 +3,6 @@
   <head>
     <title>WhoPlayedOnThat</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +12,16 @@
   <body>
     <nav class="navbar">
       <div class="container-fluid">
-        <div class="pull-right">
+        <form action="/tracks" method="get">
+          <div class="row">
+            <h4>Who Played On</h4>
+            <div class="col-sm-4"><input type="text" name="q" class="form-control form-group-lg" placeholder="That"></div>
+            <div class="col-sm-3"><button type="submit" class="btn btn-default btn-lg">?</button></div>
+          </div>
+        </form>
+      </div>
+
+      <div class="pull-right">
         <% if !current_user %>
         <%= image_tag 'http://static1.businessinsider.com/image/55816e00ecad042e1153bd2b/designer-calls-spotifys-new-logo-self-indulgent.jpg', :width=> "60px", :height=> "50px", :class=> "spotify" %>
           <%= link_to "login", "/auth/spotify" %>
@@ -21,7 +29,6 @@
           <%= image_tag current_user[:image], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
           <%= link_to "logout", "/signout", :class=> "standard-text"%>
         <% end %>
-        </div>
       </div>
     </nav>
 
