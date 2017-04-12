@@ -1,8 +1,16 @@
-<h1>Search Results for: <%= @search_term %></h1>
+<h4>search results for: <%= @query %></h4>
 
-<% @tracks.each do |track| %>
-  <%= image_tag track['album']['images'][1]['url'], :width=> "150px", :height=> "150px", :class=> "track-pic" %>
-  <%= link_to track['name'], "/track/" + track['id'] %>
-  <%= track['artists'][0]['name'] %>
-  <%= track['album']['name'] %>
-<% end %>
+<div class="container-fluid">
+  <% @tracks.each do |track| %>
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-3">
+        <%= image_tag track['album']['images'][1]['url'], :width=> "150px", :height=> "150px", :class=> "track-pic" %>
+      </div>
+      <div class="col-sm-4">
+        <h4><%= link_to track['name'], "/track/" + track['id'] %></h4>
+        <h4><%= track['artists'][0]['name'] %></h4>
+        <h4><%= track['album']['name'] %></h4>
+      </div>
+    </div>
+  <% end %>
+</div>

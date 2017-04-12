@@ -1,6 +1,12 @@
-<h1>Track#Show</h1>
+<h4>Track Name</h4>
 
-<% @track.each do |participant| %>
-<%= participant['ActivityLiteral'] %>
-<%= link_to participant['ArtistsLiteral'], "/musicians/" + participant['Artists'][0]['Id'] %><%=  %>
-<% end %>
+<div class="container-fluid">
+  <% @track.each do |participant| %>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h4><%= participant['ActivityLiteral'] %> :
+        <%= link_to participant['ArtistsLiteral'], "/musicians/" + participant['Artists'][0]['Id'] %>
+      </h4>
+      </div>
+    </div>
+  <% end %>
