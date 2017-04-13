@@ -15,25 +15,39 @@ class Musician < ApplicationRecord
   end
 
   #collecting the spotify_ids from the Quantone results in order to populate playlist page
-  def self.collect_and_return_tracks_by_spotify_ids tracks
+  def self.collect_and_return_tracks_spotify_ids tracks
     spotify_ids = []
+    spotify_uris = []
     tracks.each do |track|
       all_the_ids = track['Identifiers']
       all_the_ids.each do |id|
         if id['AdditionalInformation'] && id['IdentifierType'] == 'Spotify'
-          then spotify_ids << id['Value'][14..-1]
+          then  spotify_ids << id['Value'][14..-1]
+                spotify_uris << id['Value']
         end
       end
     end
-    return spotify_ids
+    return [spotify_ids, spotify_uris]
   end
 
   #get multiple tracks by spotify ids
   def self.get_tracks_by_spotify_ids spotify_ids
     base_uri "https://api.spotify.com/v1/tracks"
     format :json
-    get("/", query: { id: spotify_ids }, headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"] })
+    get("", query: { ids: spotify_ids }, headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"] })
   end
 
+  #create empty playlist to be filled with tracks
+  def self.create_playlist user_id
+    base_uri "https://api.spotify.com/v1/users/1299547338/playlist/"          #hard-coded work-around, wasn't able to successfully grab the user id
+    format :json
+    post("", data: { name: "WhoPlayedOnThat" }, headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"] })
+  end
+
+  #fill empty playlist with tracks from musician search results
+  def self.fill_playlist spotify_uris
+    base_uri "https://api.spotify.com/v1/users/1299547338/playlists/6pSLtQ0RmtEuLX02USeuLN/tracks"   #yet another hard-coded work-around, this time with the playlist id in
+    post("", query: { 'uris' => spotify_uris }, headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"] })
+  end
 
 end

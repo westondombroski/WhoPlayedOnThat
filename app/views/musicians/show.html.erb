@@ -3,13 +3,29 @@
 <h4><%= @instrument %></h4>
 
 
-<div class="container-fluid">
-  <form action="/musicians/playlists" method="post" class="form-inline">
-    <button type="submit" class="btn btn-default">create playlist</button>
-  </form>
+<div class="container">
 
-  <br>
+<!-- Create Playlist Button -->
+  <div class="pull-right">
+    <form action="/musicians" method="post" class="form-inline">
+      <button type="submit" class="btn btn-default">create playlist</button>
+    </form>
+  </div>
 
-  <%= @musician_tracks %>
-  
+<!-- Musicians Tracks -->
+  <% @musician_tracks.each do |track| %>
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-1">
+        <%= image_tag track['album']['images'][1]['url'], :width=> "150px", :height=> "150px", :class=> "track-pic" %>
+      </div>
+      <div class="col-sm-4">
+        <h4><%= link_to track['name'], "/track/" + track['id'] %></h4>
+        <h4><%= track['artists'][0]['name'] %></h4>
+        <h4><%= track['album']['name'] %></h4>
+        <h5><%= link_to 'Preview', track['preview_url'], target: "blank" %></h5>
+      </div>
+    </div>
+    <br>
+  <% end %>
+
 </div>
