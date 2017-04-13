@@ -1,7 +1,12 @@
-<%= breadcrumbs.render(:format => :inline) %>
-<h4>Musician Name</h4>
+
+<h4><%= @musician %></h4>
 <h4>Instrument</h4>
-<div class="container-fluid">
+
+<form action="/musicians/playlists" method="post" class="form-inline">
+  <button type="submit" class="btn btn-default">create playlist</button>
+</form>
+
+<div class="participants">
   <% @musicians.each do |track| %>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">

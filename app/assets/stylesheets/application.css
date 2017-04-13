@@ -15,5 +15,27 @@
  */
 
 body {
-  padding: 50px;
-};
+  padding: 10px;
+}
+.navbar-search {
+  padding-top: 20px;
+  text-align: center;
+}
+.spotify {
+  text-align: center;
+}
+.input-small {
+  max-width: 145px;
+}
+.breadcrumbs {
+  padding-top: 15px;
+}
+.footer {
+  background: white;
+}
+.participants {
+  text-align: center;
+}
+.idk {
+  padding-top: 150px;
+}

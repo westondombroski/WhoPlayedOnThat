@@ -10,43 +10,48 @@
   </head>
   <body>
 
+<!-- Flash Messages -->
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-success text-center" %>
+  <% end %>
+
 <!-- Navbar -->
     <div class="container">
       <nav class="navbar">
         <div class="row">
 
 <!-- Navbar Searchbar -->
-          <div class="col-sm-5 col-sm-offset-4">
+          <div class="navbar-search">
             <% if @root_path %>
             <% else %>
-              <form action="/tracks" method="get" class="form-inline">
-                <div class="form-group">
-                  <label>Who Played On</label>
-                  <input type="text" name="q" class="input-small form-control" placeholder="That">
-                </div>
+            <form action="/tracks" method="get" class="form-inline">
+              <div class="form-group">
+                <input type="text" name="q" class="input-small form-control" placeholder="who played on that">
                 <button type="submit" class="btn btn-default">?</button>
-              </form>
-            <% end %>
+              </div>
+            </form>
           </div>
 
+<!-- Breadcrumbs -->
+          <div class="pull-left float breadcrumbs">
+            <%= breadcrumbs.render(:format => :inline) %>
+          </div>
+            <% end %>
+
 <!-- Navbar login/logout/image -->
-          <div class="pull-right">
+          <div class="pull-right float">
             <% if !current_user %>
-            <%= image_tag 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.talkandroid.com%2Fuploads%2F2016%2F01%2Fspotify-app-logo-450x450.png&f=1', :width=> "60px", :height=> "60px", :class=> "spotify" %>
+              <%= image_tag 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.talkandroid.com%2Fuploads%2F2016%2F01%2Fspotify-app-logo-450x450.png&f=1', :width=> "60px", :height=> "60px", :class=> "spotify" %>
               <%= link_to "login", "/auth/spotify" %>
             <% else %>
-              <%= image_tag current_user[:image], :width=> "55px", :height=> "55px", :class=> "profile-pic img-circle" %>
+              <%= image_tag current_user[:image], :width=> "55px", :height=> "55px", :class=> "spotify img-circle" %>
               <%= link_to "logout", "/signout", :class=> "standard-text"%>
             <% end %>
           </div>
         </div>
       </nav>
     </div>
-
 <!-- End Navbar -->
-    <% flash.each do |name, msg| %>
-      <div class="text-center"><%= msg %></div>
-    <% end %>
 
 <!-- Render Pages/Partials -->
     <div class ="container-fluid">
@@ -54,7 +59,7 @@
     </div>
 
 <!-- Footer -->
-    <div class="navbar navbar-fixed-bottom">
+    <div class="navbar navbar-fixed-bottom footer">
       <div class="text-center">
       <%= image_tag 'http://icons.iconarchive.com/icons/aha-soft/torrent/512/copyleft-icon.png', :width=> "15px", :height=> "15px", :class=> "copyleft" %>
       <h6>made by weston</h6>
