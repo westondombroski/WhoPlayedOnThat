@@ -4,7 +4,10 @@
     <h2> Huh, I don't know who played on that... maybe try another track</h2>
   </div>
   <% else %>
-  <h4>Track Name</h4>
+  <div class="text-center"><h2><%= @title %></h2></div>
+
+  <br>
+
   <% @track.each do |participant| %>
     <div class="row">
       <div class="participants">

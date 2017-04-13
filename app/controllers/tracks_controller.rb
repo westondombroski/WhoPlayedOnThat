@@ -11,6 +11,7 @@ class TracksController < ApplicationController
   def show
     breadcrumbs.add 'tracks', tracks_path_url
     response = Track.get_track_musicians_by_track_id(params[:id])
+    @title = response['Results'][0]['Title']
     if response['Results'][0]
       @track = response['Results'][0]['Participations']
     else
