@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get '/auth/failure', :to => 'sessions#failure'
   get '/signout' => 'sessions#destroy', :as => :signout
 
-  get '/tracks', :to => 'tracks#index', :as => :tracks_path
-  get '/track/:id', :to => 'tracks#show', :as => :track_show_path
+  get '/tracks', :to => 'tracks#index', :as => :tracks
+  get '/track/:id', :to => 'tracks#show', :as => :track_show
 
-  get '/musicians/:id', :to => 'musicians#show', :as => :musician_path
+  get '/musicians/:id', :to => 'musicians#show', :as => :musician
+  post 'musicians', :to => 'musicians#create', :as =>:playlist_create
+
 end
