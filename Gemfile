@@ -47,7 +47,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'capybara'
   gem "factory_girl_rails", "~> 4.0"
-  gem 'dotenv-rails', groups: [:development, :test]
+
 end
 
 
