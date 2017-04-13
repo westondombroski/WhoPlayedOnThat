@@ -2,7 +2,6 @@ class TracksController < ApplicationController
 
   #takes search term from the form and submits to spotify api
   def index
-    breadcrumbs.add 'Tracks', tracks_path_url
     @query = params[:q]
     response = Track.get_tracks_by_name(@query)
     @tracks = response['tracks']['items']
@@ -10,10 +9,13 @@ class TracksController < ApplicationController
 
   #takes spotify_id of track clicked on tracks#index page and submits to quantone api
   def show
-    breadcrumbs.add 'Tracks', tracks_path_url
-    breadcrumbs.add 'Track', track_show_path_url
-    track_id = params[:id]
-    response = Track.get_track_musicians_by_track_id(track_id)
-    @track = response['Results'][0]['Participations']
+    breadcrumbs.add 'tracks', tracks_path_url
+    response = Track.get_track_musicians_by_track_id(params[:id])
+    @title = response['Results'][0]['Title']
+    if response['Results'][0]
+      @track = response['Results'][0]['Participations']
+    else
+      @track = nil
+    end
   end
 end

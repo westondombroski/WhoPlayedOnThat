@@ -1,12 +1,21 @@
-<%= breadcrumbs.render(:format => :inline) %>
-<h4>Track Name</h4>
-<div class="container-fluid">
+<div class="container">
+  <% if @track == nil %>
+  <div class="text-center idk">
+    <h2> Huh, I don't know who played on that... maybe try another track</h2>
+  </div>
+  <% else %>
+  <div class="text-center"><h2><%= @title %></h2></div>
+
+  <br>
+
   <% @track.each do |participant| %>
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <h4><%= participant['ActivityLiteral'] %> :
+      <div class="participants">
+        <h4><%= participant['ActivityLiteral'] %>:
         <%= link_to participant['ArtistsLiteral'], "/musicians/" + participant['Artists'][0]['Id'] %>
       </h4>
       </div>
     </div>
   <% end %>
+</div>
+<% end %>
