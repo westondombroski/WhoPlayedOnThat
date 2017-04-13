@@ -11,7 +11,7 @@ gem 'kaminari'
 gem 'httparty'
 gem 'omniauth-spotify-oauth2'
 gem 'omniauth-spotify'
-gem 'dotenv-rails', groups: [:development, :test]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use postgresql as the database for Active Record
@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'capybara'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'dotenv-rails', groups: [:development, :test]
 end
 
 
