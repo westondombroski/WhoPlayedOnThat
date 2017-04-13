@@ -42,7 +42,7 @@
 <!-- Navbar login/logout/image -->
           <div class="pull-right float">
             <% if !current_user %>
-              <%= image_tag 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.talkandroid.com%2Fuploads%2F2016%2F01%2Fspotify-app-logo-450x450.png&f=1', :width=> "60px", :height=> "60px", :class=> "spotify" %>
+              <%= image_tag 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fjakoblindhagen.com%2Fspotify_logo.png&f=1', :width=> "50px", :height=> "50px", :class=> "spotify img-circle" %>
               <%= link_to "login", "/auth/spotify" %>
             <% else %>
               <%= image_tag current_user[:image], :width=> "55px", :height=> "55px", :class=> "spotify img-circle" %>
@@ -62,7 +62,7 @@
 <!-- Footer -->
     <div class="navbar navbar-fixed-bottom footer">
       <div class="text-center">
-      <%= image_tag 'http://icons.iconarchive.com/icons/aha-soft/torrent/512/copyleft-icon.png', :width=> "15px", :height=> "15px", :class=> "copyleft" %>
+      <%= image_tag 'http://icons.iconarchive.com/icons/aha-soft/torrent/512/copyleft-icon.png', :width=> "15px", :height=> "15px", :class=> "copyleft img-circle" %>
       <h6>made by weston</h6>
       </div>
     </div>
