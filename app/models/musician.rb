@@ -38,15 +38,17 @@ class Musician < ApplicationRecord
   end
 
   #create empty playlist to be filled with tracks
-  def self.create_playlist user_id
-    base_uri "https://api.spotify.com/v1/users/1299547338/playlist/"          #hard-coded work-around, wasn't able to successfully grab the user id
+  def self.create_playlist user_id            #hard-coded work-around, wasn't able to successfully grab the user id
+    base_uri "https://api.spotify.com/v1/users/#{user_id}/playlists"
     format :json
-    post("", data: { name: "WhoPlayedOnThat" }, headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"] })
+    post("",  headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"],
+                         'scope' => 'playlist-modify-public playlist-modify-private playlist-read-private user-read-private user-read-email' },
+              body: { 'description'=> 'New playlist description', 'name': 'WhoPlayedOnThat2', 'public': false })
   end
 
   #fill empty playlist with tracks from musician search results
-  def self.fill_playlist spotify_uris
-    base_uri "https://api.spotify.com/v1/users/1299547338/playlists/6pSLtQ0RmtEuLX02USeuLN/tracks"   #yet another hard-coded work-around, this time with the playlist id in
+  def self.fill_playlist (spotify_uris, playlist_id, user_id)
+    base_uri "https://api.spotify.com/v1/users/#{user_id}/playlists/6pSLtQ0RmtEuLX02USeuLN/tracks"   #yet another hard-coded work-around, this time with the playlist id in
     post("", query: { 'uris' => spotify_uris }, headers: { 'client_id' => ENV["SPOTIFY_CLIENT_ID"], 'client_secret' => ENV["SPOTIFY_CLIENT_SECRET"] })
   end
 
