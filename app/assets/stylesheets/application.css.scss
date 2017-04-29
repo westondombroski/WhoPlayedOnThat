@@ -15,12 +15,12 @@
  */
 
 body.homepage {
-  background-image: asset-url("Who.png", image);
+  background-image: asset-data-url("Who.png", image);
   background-size: 100%;
   padding-bottom: 50px;
 }
 body.other_pages {
-  background-image: asset-url("who_bg_color.png", image);
+  background-image: asset-data-url("who_bg_color.png", image);
   background-size: 100%;
   padding-top: 180px;
   padding-bottom: 50px;
