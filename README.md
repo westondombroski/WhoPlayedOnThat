@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app takes advantage of the Spotify and Quantone API's enabling the user to
+search for a song and find the musician credits (as well as production credits)
+who participated in that song's recording (assuming the data is available on
+Quantone). The user can then search any name of the recording credits to find
+other works on which he or she has contributed.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Check it out here!](http://whoplayedonthat.herokuapp.com)

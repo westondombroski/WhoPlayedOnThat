@@ -1,8 +1,17 @@
 <div class="container-fluid">
+  <div class="pull-right float">
+    <% if !current_user %>
+      <div><%= image_tag 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fjakoblindhagen.com%2Fspotify_logo.png&f=1', :width=> "50px", :height=> "50px", :class=> "spotify img-circle" %></div>
+      <div class="text-center"><%= link_to "login", "/auth/spotify" %></div>
+    <% else %>
+      <div><%= image_tag current_user[:image], :width=> "55px", :height=> "55px", :class=> "spotify img-circle" %></div>
+      <div class="text-center"><%= link_to "logout", "/signout", :class=> "standard-text"%></div>
+    <% end %>
+  </div>
   <div class="col-sm-6">
     <div class="row">
       <form action="/tracks" method="get">
-        <div class="col-sm-4"><input type="text" name="q" class="that" style="font-size:42px" placeholder="That"></div>
+        <div class="col-sm-4"><input type="text" name="q" class="that" style="font-size:42px" placeholder="that"></div>
         <div class="col-sm-3"><button type="submit" class="btn question"></button></div>
       </form>
     </div>
